@@ -1,0 +1,30 @@
+# Secrets and environment variables
+.env
+.env.*
+!.env.example
+
+# Frontend dependencies
+node_modules/
+
+# Python environment
+.venv/
+venv/
+
+# Build files
+dist/
+build/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Mac system files
+.DS_Store
+
+# Logs
+*.log
+
+# Local testing files
+backend/revoke_sessions.py
+backend/test_supabase.py
+backend/knowflow_test_document.txt
