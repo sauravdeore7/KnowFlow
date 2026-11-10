@@ -1,5 +1,5 @@
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000'
 
-const API_BASE_URL = 'http://127.0.0.1:8000'
 
 async function getErrorMessage(response, fallback) {
   try {
@@ -22,7 +22,6 @@ export async function uploadDocument(accessToken, projectId, file) {
 
   try {
     response = await fetch(
-      `${API_BASE_URL}/documents/?project_id=${encodeURIComponent(projectId)}`,
       {
         method: 'POST',
         headers: {
@@ -53,7 +52,6 @@ export async function deleteDocument(accessToken, documentId) {
 
   try {
     response = await fetch(
-      `${API_BASE_URL}/documents/${encodeURIComponent(documentId)}`,
       {
         method: 'DELETE',
         headers: {
@@ -83,7 +81,6 @@ export async function downloadDocument(accessToken, documentId) {
 
   try {
     response = await fetch(
-      `${API_BASE_URL}/documents/${encodeURIComponent(documentId)}/download`,
       {
         method: 'GET',
         headers: {

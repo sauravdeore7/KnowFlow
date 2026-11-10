@@ -1,5 +1,6 @@
 
-const API_BASE_URL = 'http://127.0.0.1:8000'
+const API_BASE_URL =
+  import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000'
 
 async function handoverRequest(accessToken, path, body) {
   if (!accessToken) {
@@ -41,7 +42,7 @@ export async function confirmHandover(accessToken, handoverId, comments = '') {
 
   return handoverRequest(
     accessToken,
-    `/handovers/${handoverId}/confirm`,
+    `/handovers/${encodeURIComponent(handoverId)}/confirm`,
     { comments },
   )
 }
@@ -53,7 +54,7 @@ export async function approveHandover(accessToken, handoverId, goodWishes) {
 
   return handoverRequest(
     accessToken,
-    `/handovers/${handoverId}/approve`,
+    `/handovers/${encodeURIComponent(handoverId)}/approve`,
     { good_wishes: goodWishes },
   )
 }
@@ -65,7 +66,7 @@ export async function requestHandoverChanges(accessToken, handoverId, feedback) 
 
   return handoverRequest(
     accessToken,
-    `/handovers/${handoverId}/request-changes`,
+    `/handovers/${encodeURIComponent(handoverId)}/request-changes`,
     { feedback },
   )
 }
@@ -82,7 +83,7 @@ export async function shareHandover(
 
   return handoverRequest(
     accessToken,
-    `/handovers/${handoverId}/share`,
+    `/handovers/${encodeURIComponent(handoverId)}/share`,
     {
       incoming_employee_id: incomingEmployeeId,
       permissions,
@@ -97,7 +98,7 @@ export async function revokeHandoverAccess(accessToken, handoverId) {
 
   return handoverRequest(
     accessToken,
-    `/handovers/${handoverId}/revoke`,
+    `/handovers/${encodeURIComponent(handoverId)}/revoke`,
     {},
   )
 }

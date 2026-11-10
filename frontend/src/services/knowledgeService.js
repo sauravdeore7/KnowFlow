@@ -1,5 +1,5 @@
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000'
 
-const API_BASE_URL = 'http://127.0.0.1:8000'
 
 export async function extractProjectKnowledge(accessToken, projectId) {
   if (!accessToken) {
@@ -14,7 +14,6 @@ export async function extractProjectKnowledge(accessToken, projectId) {
 
   try {
     response = await fetch(
-      `${API_BASE_URL}/knowledge/extract/${projectId}`,
       {
         method: 'POST',
         headers: {
